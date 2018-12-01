@@ -1,0 +1,90 @@
+name:                evangelium
+version:             0.1.0.0
+github:              "CGenie/evangelium"
+license:             BSD3
+author:              "Przemek Kamiński"
+maintainer:          "cgenie@gmail.com"
+copyright:           "Przemek Kamiński"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+ghc-options: -Wall -Wincomplete-patterns -Wincomplete-uni-patterns -Wredundant-constraints
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/CGenie/evangelium#readme>
+
+default-extensions:
+  - EmptyCase
+  - FlexibleContexts
+  - FlexibleInstances
+  - InstanceSigs
+  - MultiParamTypeClasses
+  - LambdaCase
+  - MultiWayIf
+  - NamedFieldPuns
+  - TupleSections
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - DerivingStrategies
+  - GeneralizedNewtypeDeriving
+  - StandaloneDeriving
+  - BangPatterns
+  - KindSignatures
+  - TypeOperators
+  - OverloadedStrings
+  - ScopedTypeVariables
+  - TypeApplications
+  - ConstraintKinds
+  - RankNTypes
+  #- ApplicativeDo
+  - DefaultSignatures
+  - PatternSynonyms
+
+  - TemplateHaskell  # lens
+
+dependencies:
+- base >= 4.7 && < 5
+- blaze-html >= 0.9 && < 1.0
+- blaze-markup >= 0.8 && < 1.0
+- HandsomeSoup >= 0.4.2 && < 0.5
+- http-conduit >= 2.3 && < 2.4
+- hxt >= 9.3 && < 9.4
+- MissingH >= 1.4 && < 1.5
+- text >= 1.2 && < 1.3
+- time >= 1.8.0 && < 2.0
+
+library:
+  source-dirs: src
+
+executables:
+  evangelium-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - evangelium
+
+tests:
+  evangelium-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - evangelium
